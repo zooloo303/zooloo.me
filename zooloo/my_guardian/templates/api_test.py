@@ -16,6 +16,12 @@ async def main():
     # create a user obj using a known bungie id
     user = DestinyUser(membership_id=4611686018467765462, membership_type=BungieMembershipType.TIGER_STEAM)
 
+    # fetch the user's profile
+    profile = await client.get_profile(user)
+
+    # print the user's display name
+    print(profile.user_info.displayName)
+    
     # iterate thought the raids that user has played
     async for activity in user.yield_activity_history(mode=DestinyActivityModeType.RAID):
 
